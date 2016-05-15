@@ -9,6 +9,7 @@
 #import "DemoTableViewController.h"
 #import "DemoWebViewController.h"
 #import "GTScrollNavigationBar.h"
+#import "MJRefresh.h"
 
 static int const kTotalRows = 100;
 static int const kTotalSections = 10;
@@ -38,6 +39,22 @@ static int const kTotalSections = 10;
     if (self.hasRefreshControl) {
         [self setupRefreshControl];
     }
+    
+//    UINavigationBar *navBar = self.navigationController.navigationBar;
+//    CGRect frame = CGRectMake(0, -20, CGRectGetWidth(navBar.frame), CGRectGetHeight(navBar.frame) + 20);
+//    UIView *barView = [[UIView alloc] initWithFrame:frame];
+//    barView.backgroundColor = [UIColor redColor];
+//    [navBar addSubview:barView];
+//    
+//    __weak __typeof(self) weakSelf = self;
+//    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [weakSelf.tableView.header endRefreshing];
+//        });
+//    }];
+    
+    NSLog(@"%@", NSStringFromCGRect(self.tableView.frame));
+    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -45,7 +62,7 @@ static int const kTotalSections = 10;
     [super viewWillAppear:animated];
 //    self.navigationController.navigationBar.translucent = NO;
     
-    self.navigationItem.title = @"DemoScrollNavigationBar";
+//    self.navigationItem.title = @"DemoScrollNavigationBar";
     self.navigationController.scrollNavigationBar.scrollView = self.tableView;
 }
 
